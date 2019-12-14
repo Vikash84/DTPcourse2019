@@ -15,6 +15,11 @@ Then open a terminal in the same directory.
 
 # Alignment of short reads from RNA-seq of chicken embryo fibroblast (CEF) cells:
 
+In this part of the tutorial, we will look at the impact of viral infections on the cell state. 
+The aim is to compare the patterns of gene expression in infected and uninfected chicken cells.
+
+Three RNA-seq replicates are provided both for naive CEF cells and for CEF cells infected with Newcastle Disease Virus (NDV). 
+These RNA-seq samples are paired-end: "_R1" and "_R2" denote files containing the first or the second read of each pair.
 
 
 
