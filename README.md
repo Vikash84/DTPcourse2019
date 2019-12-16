@@ -144,6 +144,8 @@ And run these commands
 
 >> counts<-read.table("jointcount.sorted.csv",header=T,stringsAsFactors=F)
 
+>> colnames(counts)<-c("CEFnaive_1","CEFnaive_2","CEFnaive_3","CEFNDV_1","CEFNDV_2","CEFNDV_3")
+
 >> cts<-round(counts)
 
 >> keep <- rowSums(cts) >= 10 ; cts <- cts[keep,]
