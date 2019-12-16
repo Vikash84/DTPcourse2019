@@ -9,12 +9,15 @@ https://www.dropbox.com/sh/q07p0xb3qqcahny/AADrZHwb9UoHHmB6YjKNdLZBa?dl=0
 https://www.dropbox.com/sh/2aff7egibvev79f/AABXNTGfJ3w5P5Q0SM0DVP2ca?dl=0
 (mosquitoes) in the directory where you choose to work.
 
-PLEASE MOVE THE FILES TO A SUBDIRECTORY OF /tmp/ AND WORK FROM THERE!
+```diff
+- PLEASE MOVE THE FILES TO A SUBDIRECTORY OF /tmp/ AND WORK FROM THERE!
+- PLEASE EXECUTE THE COMMAND BELOW TO FIND THE ALIGNERS
+```
 
-GEMTOOLS CAN BE DOWNLOADED DIRECTLY FROM THIS LINK
-http://barnaserver.com/gemtools/releases/GEMTools-static-i3-1.7.1.tar.gz
-WHILE KALLISTO CAN BE INSTALLED FROM
-https://pachterlab.github.io/kallisto/download
+> export PATH=$PATH:/usr/local/bioinformatics/gemtools-1.7.1-i3/bin/ 
+
+> export PATH=$PATH:/usr/local/kallisto/
+
 
 You can also download only a few of the files initially, then start working while you download the others.
 
