@@ -104,11 +104,59 @@ You could also join multiple files in a single table before analysing them, usin
 
 replacing again FILE1 and FILE2 with the correct names.
 
+To join multiple files FILE1 FILE2 ... FILEN at once, use the script
+
+> echo FILE1 FILE2 ... FILEN | awk '{for(i=1;i<=NF;i++){print $i}}' | awk '{n=n+1; while ((getline line < $1)>0){ nf[n]=split(line,v,"\t"); key=v[0+$2]; listkeys[key]=listkeys[key]+1; s=""; for(i=1;i<=nf[n];i++){if(i!=$2){s=s"\t"v[i]}}; iskeyin[n" "key]=1; res[n" "key]=s} }END{ for(key in listkeys){ if(listkeys[key]==n){ s=key; for(i=1;i<=n;i++){s=s""res[i" "key]}; print s} else { s=key; for(i=1;i<=n;i++){if(iskeyin[i" "key]+0==1){s=s""res[i" "key]} else {for(j=1;j<=(nf[i]-1);j++){s=s"\tNO_RECORD"}}}; print s} } }' | awk '{gsub("NO_RECORD","0"); print}' | sort -k 1b,1 > jointcount.sorted.csv
+
 ----------------------
 
 # Differential Expression Analysis:
 
+We will use DESeq2, one of the standard tools for differential expression analysis.
 
+First, prepare a TAB-separated text file (let's call it "data_table.txt") in the following format:
+
+           condition	type
+CEFnaive_1	naive	paired-end
+CEFnaive_2	naive	paired-end
+CEFnaive_3	naive	paired-end
+CEFNDV_1	infected	paired-end
+CEFNDV_2	infected	paired-end
+CEFNDV_3	infected	paired-end
+
+Then, open R:
+
+> R
+
+And run these commands
+
+>> library(DESeq2)
+
+>> counts<-read.table("jointcount.sorted.csv",header=T,stringsAsFactors=F)
+
+>> cts<-round(counts)
+
+>> keep <- rowSums(cts) >= 10 ; cts <- cts[keep,]
+
+>> coldata <- read.csv("data_table.txt", row.names=1, sep="\t")
+
+>>  dds <- DESeqDataSetFromMatrix(countData = cts, colData = coldata, design = ~ condition)
+
+>> dds$condition <- relevel(dds$condition, ref = "naive")
+
+>> dds <- DESeq(dds)
+
+>> results_DEA <- results(dds, contrast=c("condition","infected","naive"))
+
+>> results_DEA_shrinklFC <- lfcShrink(dds, coef="condition_infected_vs_naive", type="apeglm")
+
+(the latter is better in practice, since log-fold changes are shrunk when the significance is low).
+
+The results can be then plotted/analysed within R or exported as tab-separated file as
+
+> write.table(results_DEA_shrinklFC, file="results_DEA.tsv", ,sep="\t", quote=F)
+
+A good explanation and introduction to DESeq2 can be found here: http://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
 
 ----------------------
 
