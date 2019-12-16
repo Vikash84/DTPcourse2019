@@ -8,6 +8,14 @@ https://www.dropbox.com/sh/q07p0xb3qqcahny/AADrZHwb9UoHHmB6YjKNdLZBa?dl=0
 (chicken+NDV) and
 https://www.dropbox.com/sh/2aff7egibvev79f/AABXNTGfJ3w5P5Q0SM0DVP2ca?dl=0
 (mosquitoes) in the directory where you choose to work.
+
+PLEASE MOVE THE FILES TO A SUBDIRECTORY OF /tmp/ AND WORK FROM THERE!
+
+GEMTOOLS CAN BE DOWNLOADED DIRECTLY FROM THIS LINK
+http://barnaserver.com/gemtools/releases/GEMTools-static-i3-1.7.1.tar.gz
+WHILE KALLISTO CAN BE INSTALLED FROM
+https://pachterlab.github.io/kallisto/download
+
 You can also download only a few of the files initially, then start working while you download the others.
 
 Then open a terminal in the same directory. 
