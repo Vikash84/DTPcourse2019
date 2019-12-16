@@ -120,19 +120,19 @@ We will use DESeq2, one of the standard tools for differential expression analys
 
 First, prepare a TAB-separated text file (let's call it "data_table.txt") in the following format:
 
-           condition	type
+                condition	 type
+               
+     CEFnaive_1	naive	paired-end
 
-CEFnaive_1	naive	paired-end
+     CEFnaive_2	naive	paired-end
 
-CEFnaive_2	naive	paired-end
+     CEFnaive_3	naive	paired-end
 
-CEFnaive_3	naive	paired-end
+     CEFNDV_1	infected	paired-end
 
-CEFNDV_1	infected	paired-end
+     CEFNDV_2	infected	paired-end
 
-CEFNDV_2	infected	paired-end
-
-CEFNDV_3	infected	paired-end
+     CEFNDV_3	infected	paired-end
 
 Then, open R:
 
