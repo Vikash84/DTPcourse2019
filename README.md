@@ -54,7 +54,7 @@ The six NDV genes are called "NP", "P", "M", "F", "HN", "L" in order of distance
 
 # Initialise alignments by indexing reference genomes:
 
-> kallisto index -i Gallus_gallus.Gallus_gallus-5.0.cdna.all.idx Gallus_gallus.Gallus_gallus-5.0.cdna.all.fa.gz 
+> kallisto index -i Gallus_gallus.Gallus_gallus-5.0.cdna.all.idx Gallus_gallus.Gallus_gallus-5.0.cdna.all.fa
 
 (The next steps could take ~15 minutes)
 
