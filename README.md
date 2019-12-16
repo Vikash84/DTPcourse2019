@@ -62,6 +62,10 @@ We take as an example the sample CEFNDV_1, but the same procedure can be repeate
 The results can be found in the directory kallistoOutput_CEFNDV_1 chosen as in the above command. 
 The file abundance.tsv contains all read counts and TPMs for the sample.
 
+To extract just the counts for differential expression analysis, you can use commands like
+
+> cut -f 1,4 kallistoOutput_CEFNDV_1/abundance.tsv | sed '1d' > CEFNDV_1.kallisto.counts.txt
+
 ----------------------
 
 # Alignment of short reads with GEM:
@@ -117,11 +121,17 @@ We will use DESeq2, one of the standard tools for differential expression analys
 First, prepare a TAB-separated text file (let's call it "data_table.txt") in the following format:
 
            condition	type
+
 CEFnaive_1	naive	paired-end
+
 CEFnaive_2	naive	paired-end
+
 CEFnaive_3	naive	paired-end
+
 CEFNDV_1	infected	paired-end
+
 CEFNDV_2	infected	paired-end
+
 CEFNDV_3	infected	paired-end
 
 Then, open R:
@@ -155,6 +165,8 @@ And run these commands
 The results can be then plotted/analysed within R or exported as tab-separated file as
 
 > write.table(results_DEA_shrinklFC, file="results_DEA.tsv", ,sep="\t", quote=F)
+
+The two more useful columns are log2FoldChange (which is the log-fold change in base 2) and padj (the p-value adjusted for multiple testing).
 
 A good explanation and introduction to DESeq2 can be found here: http://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
 
